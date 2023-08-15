@@ -1,0 +1,14 @@
+#packages
+library(raster)
+library(sf)
+library (tmap)
+library (ggplot2)
+library (lidR)
+
+#load input data
+raster <- raster()
+pointcloud <- readLAS()
+#plotting methods
+plot(raster)
+plot(pointcloud)
+#different methods to plot data
