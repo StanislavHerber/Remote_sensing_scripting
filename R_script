@@ -6,9 +6,20 @@ library (ggplot2)
 library (lidR)
 
 #load input data
-raster <- raster()
-pointcloud <- readLAS()
-#plotting methods
-plot(raster)
-plot(pointcloud)
-#different methods to plot data
+setwd("C:/PhD/Coding")
+raster <- raster("data/")
+pointcloud <- readLAS("data/")
+border_slovakia1 <- read_sf("data/kraj_0.shp")
+border_slovakia2 <- read_sf("data/ku_0")
+border_slovakia3 <- ("data/obec_0.shp")
+border_slovakia4 <- ("data/okres_0.shp")
+border_slovakia5 <- ("data/sr_0.shp")
+
+plot(st_geometry(border_slovakia))
+#merge regions together 
+border_slovakia_merged <- st_union(border_slovakia)
+plot(border_slovakia_merged)
+#export result in shapefile
+st_write(border_slovakia_merged, "results/border_slovakia_merged.shp",layer_options = "SHPT=POLYGON")
+plot(st_geometry(border_slovakia_merged),border = "red")
+plot(st_geometry(border_slovakia),add=T)
